@@ -10,7 +10,8 @@ import os
 import pandas as pd
 
 # root = os.path.abspath(os.path.dirname(__file__))
-root = os.path.join(os.path.abspath(""), "utils")
+#root = os.path.join(os.path.abspath(""), "utils") # 18/03/24 GALC change
+root = os.path.join(os.path.dirname(os.path.abspath(__file__))) #18/03/24 GALC change
 smarts_file = os.path.join(root, "smarts_pattern.tsv")
 
 def split_acid_base_pattern(smarts_file):
@@ -69,6 +70,7 @@ def match_base(df_smarts_base, mol):
     return matches_modify
 
 def get_ionization_aid(mol, acid_or_base=None):
+    #print('root from ionization:',root)
     df_smarts_acid, df_smarts_base = split_acid_base_pattern(smarts_file)
 
     if mol == None:

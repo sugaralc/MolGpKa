@@ -10,12 +10,17 @@ from rdkit.Chem.MolStandardize import rdMolStandardize
 import os.path as osp
 import numpy as np
 import pandas as pd
+#import os # 18/03/24 GALC change
 
 import torch
+import warnings
+warnings.filterwarnings("ignore") #Supressing warning from torch_geometric GALC change 31/03/24
+
 from utils.ionization_group import get_ionization_aid
 from utils.descriptor import mol2vec
 from utils.net import GCNNet
 
+#os.chdir(osp.dirname(osp.abspath(__file__))) # 18/03/24 GALC change
 root = osp.abspath(osp.dirname(__file__))
 
 def load_model(model_file, device="cpu"):
@@ -35,6 +40,7 @@ def model_pred(m2, aid, model, device="cpu"):
 
 def predict_acid(mol):
     model_file = osp.join(root, "../models/weight_acid.pth")
+    #model_file = "/users/glara/Carbohidrate_ligand/Sucrose-PBAs/Solvent/HostDesigner/ab-initio_screening/molecules_screening/geometries_screen/GB_GA/MolGpKa/models/weight_acid.pth"
     model_acid = load_model(model_file)
 
     acid_idxs= get_ionization_aid(mol, acid_or_base="acid")
@@ -46,6 +52,8 @@ def predict_acid(mol):
 
 def predict_base(mol):
     model_file = osp.join(root, "../models/weight_base.pth")
+    #model_file = "/users/glara/Carbohidrate_ligand/Sucrose-PBAs/Solvent/HostDesigner/ab-initio_screening/molecules_screening/geometries_screen/GB_GA/MolGpKa/models/weight_base.pth"
+    #print('root:',root)
     model_base = load_model(model_file)
 
     base_idxs= get_ionization_aid(mol, acid_or_base="base")

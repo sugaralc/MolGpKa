@@ -119,7 +119,7 @@ if __name__=="__main__":
     mol = Chem.MolFromSmiles("CN(C)CCCN1C2=CC=CC=C2SC2=C1C=C(C=C2)C(C)=O")
     smi = "CN(C)CCCN1C2=CC=CC=C2SC2=C1C=C(C=C2)C(C)=O"
     smi = "Nc1cc(C(F)(F)F)c(-c2cc(N3CCCC3)nc(N3CCOCC3)n2)cn1"
-    pt_smis = protonate_mol(smi, ph=7.0, tph=2.5)
+    pt_smis = protonate_mol(smi, ph=9.0, tph=0.0)
     print(pt_smis)
 
 
