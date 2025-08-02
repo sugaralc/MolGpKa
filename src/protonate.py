@@ -1,3 +1,4 @@
+import predict_pka
 from predict_pka import predict_for_protonate
 from copy import deepcopy
 from rdkit import Chem

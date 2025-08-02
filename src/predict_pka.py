@@ -16,9 +16,9 @@ import torch
 import warnings
 warnings.filterwarnings("ignore") #Supressing warning from torch_geometric GALC change 31/03/24
 
-from utils.ionization_group import get_ionization_aid
-from utils.descriptor import mol2vec
-from utils.net import GCNNet
+from MolGpKa.src.utils.ionization_group import get_ionization_aid
+from MolGpKa.src.utils.descriptor import mol2vec
+from MolGpKa.src.utils.net import GCNNet
 
 #os.chdir(osp.dirname(osp.abspath(__file__))) # 18/03/24 GALC change
 root = osp.abspath(osp.dirname(__file__))
